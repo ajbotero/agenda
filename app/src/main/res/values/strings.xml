@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">agenda</string>
+    <string name="welcome">Bienvenidos</string>
+    <string name="login">Login</string>
+</resources>
