@@ -12,7 +12,8 @@
         android:layout_centerInParent="true"
         android:text="@string/welcome"
         android:textStyle="italic|bold"
-        android:textSize="40sp"/>
+        android:textSize="40sp"
+        android:textColor="@color/white"/>
 
     <ImageView
         android:layout_width="wrap_content"
