@@ -27,6 +27,18 @@ public class CacheManager {
         mEditor.putString(KeysShared.KEY_CEL, contact.getCel());
         mEditor.putBoolean(KeysShared.KEY_FIRST, true);
         mEditor.commit();
+                    }
+
+    public Contact getUser(){
+
+        String name = pref.getString(KeysShared.KEY_NAME, "");
+        String email = pref.getString(KeysShared.KEY_EMAIL, "");
+        String cel = pref.getString(KeysShared.KEY_CEL, "0");
+        String phone = pref.getString(KeysShared.KEY_PHONE, "0");
+
+        Contact c = new Contact(name, email, cel, phone);
+
+        return c;
     }
 
     public boolean isLoggin(){
