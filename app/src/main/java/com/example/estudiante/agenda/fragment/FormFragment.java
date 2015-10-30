@@ -3,18 +3,22 @@ package com.example.estudiante.agenda.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.estudiante.agenda.MainActivity;
 import com.example.estudiante.agenda.Model.Contact;
 import com.example.estudiante.agenda.R;
+import com.example.estudiante.agenda.database.SQL;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +33,10 @@ public class FormFragment extends Fragment {
     @Bind(R.id.et_mail)  EditText etMail;
     @Bind(R.id.et_celular)  EditText etCelular;
     @Bind(R.id.et_phone)   EditText etPhone;
+    //@Bind(R.id.spinner) Spinner spinner;
+
+    private SQL sql;
+
 
     private final String emailPattern = "[a-zA-Z0-9.-_]+@[a-z]+\\.+[a-z]+";
     boolean valid = true;
@@ -36,6 +44,7 @@ public class FormFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sql = new SQL(getContext());
 
     }
 
@@ -78,14 +87,10 @@ public class FormFragment extends Fragment {
             }
 
             if (valid) {
-                //paso todas las validaciones
-                //Contact c = new Contact(name,mail,celular, phone);
-                //cacheManager.setUser(c);
+                Contact contact = new Contact (0, name, mail, celular, phone, "", "");
+                long id = sql.insertContact(contact);
 
-                //Intent i = new Intent(this, MainActivity.class);
-                //startActivity(i);
-                Snackbar snackbar = Snackbar.make(v, "TODO OK", Snackbar.LENGTH_LONG);
-                snackbar.show();
+                ((MainActivity)getActivity()).newData(id);
 
             }
 

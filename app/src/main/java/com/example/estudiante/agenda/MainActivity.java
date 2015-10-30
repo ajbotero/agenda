@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.tab_layout) TabLayout mTabLayout;
     @Bind(R.id.viewpager) ViewPager mviewPager;
 
+    DummyFragment dummyFragment;
+    FormFragment formFragment;
+
+
 
 
     @Override
@@ -28,13 +32,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        dummyFragment = new DummyFragment();
+        formFragment = new FormFragment();
+
         setSupportActionBar(mToolbar);
         mTabLayout.addTab(mTabLayout.newTab().setText("TAB1"));
         mTabLayout.addTab(mTabLayout.newTab().setText("NUEVO CONTACTO"));
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFrag(new DummyFragment());
-        viewPagerAdapter.addFrag(new FormFragment());
+        viewPagerAdapter.addFrag(dummyFragment);
+        viewPagerAdapter.addFrag(formFragment);
 
         mviewPager.setAdapter(viewPagerAdapter);
         mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
@@ -43,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
+                mviewPager.setCurrentItem(tab.getPosition());
 
                 switch (tab.getPosition()){
                     case 0:
@@ -68,5 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         };
+    public void newData(long id){ //patron observer
+        dummyFragment.refresh(id);
+    }
     }
 
