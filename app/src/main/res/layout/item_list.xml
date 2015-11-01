@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="Nombre"
             android:layout_margin="5dp"
-            android:textSize="30dp"
+            android:textSize="20dp"
                         />
 
         <TextView
@@ -34,9 +34,34 @@
             android:layout_height="wrap_content"
             android:text="Email"
             android:layout_margin="5dp"
-            android:textSize="30dp"
+            android:textSize="20dp"
             />
 
+        <TextView
+            android:id="@+id/tv_celular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Celular"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefono"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Grupo"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            />
 
     </LinearLayout>
 

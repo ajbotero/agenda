@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,7 @@ public class FormFragment extends Fragment {
     @Bind(R.id.et_mail)  EditText etMail;
     @Bind(R.id.et_celular)  EditText etCelular;
     @Bind(R.id.et_phone)   EditText etPhone;
-    //@Bind(R.id.spinner) Spinner spinner;
+    @Bind(R.id.spinner) Spinner spinner;
 
     private SQL sql;
 
@@ -70,6 +71,8 @@ public class FormFragment extends Fragment {
         String mail = etMail.getText().toString().trim();
         String celular = etCelular.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
+        String spin = spinner.getSelectedItem().toString();
+
         //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         //imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
@@ -87,12 +90,15 @@ public class FormFragment extends Fragment {
             }
 
             if (valid) {
-                Contact contact = new Contact (0, name, mail, celular, phone, "", "");
+                Contact contact = new Contact (0, name, mail, celular, phone, "", spin);
                 long id = sql.insertContact(contact);
-
                 ((MainActivity)getActivity()).newData(id);
 
-            }
+
+
+                  }
+
+
 
         }else {
             showError("Error todos los datos son requeridos", v);

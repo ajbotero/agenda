@@ -48,6 +48,9 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
         @Bind(R.id.tv_name) TextView tvName;
         @Bind(R.id.tv_email) TextView tvMail;
+        @Bind(R.id.tv_celular) TextView tvCelular;
+        @Bind(R.id.tv_phone) TextView tvPhone;
+        @Bind(R.id.tv_spinner) TextView tvSpin;
 
         public ContactViewHolder(View itemView) {
             super(itemView);
@@ -57,6 +60,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         public void bindHolder(Contact contact){
             tvName.setText(contact.getName());
             tvMail.setText(contact.getEmail());
+            tvCelular.setText(contact.getCel());
+            tvSpin.setText(contact.getGroup());
         }
     }
 }

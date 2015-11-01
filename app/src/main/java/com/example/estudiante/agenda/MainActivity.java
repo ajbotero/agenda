@@ -1,6 +1,7 @@
 package com.example.estudiante.agenda;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,12 +37,18 @@ public class MainActivity extends AppCompatActivity {
         formFragment = new FormFragment();
 
         setSupportActionBar(mToolbar);
+
+        //se crean los nombres de las columnas
         mTabLayout.addTab(mTabLayout.newTab().setText("TAB1"));
         mTabLayout.addTab(mTabLayout.newTab().setText("NUEVO CONTACTO"));
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+        //Se le ingresa un fragmento a cada columna
         viewPagerAdapter.addFrag(dummyFragment);
         viewPagerAdapter.addFrag(formFragment);
+
+
 
         mviewPager.setAdapter(viewPagerAdapter);
         mviewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));

@@ -20,4 +20,6 @@
     <color name="rel">#faf4f4f4</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="my_spinner_text_color">#000000</color>
+
 </resources>

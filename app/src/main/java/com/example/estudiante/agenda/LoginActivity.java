@@ -49,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         String mail = etMail.getText().toString().trim();
         String celular = etCelular.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
+
+        //esconder teclado al presionar boton
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
